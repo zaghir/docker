@@ -4,6 +4,7 @@
  * Quelques url 
  *  *  https://hub.docker.com
  *  *  https://www.docker.com 
+ * Je me suis basé aussi sur la formation docker de Ranga Raranam  in28mins
  
 
  ### GIT 

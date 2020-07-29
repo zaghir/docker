@@ -1,0 +1,87 @@
+version: '3.7'
+# ERROR - Removed subprocess.CalledProcessError: 
+# Command '['/usr/local/bin/docker-credential-desktop', 'get']' 
+# returned non-zero exit status 1
+
+# SOLUTION - Remove "credsStore":"desktop" from ~/.docker/config.json 
+# Original Content of ~/.docker/config.json
+# {"auths":{},"credsStore":"", "credsStore":"desktop","stackOrchestrator":"swarm"}
+# Update it to this
+# {"auths":{},"credsStore":"","stackOrchestrator":"swarm"}
+# OR
+# {"auths":{},"stackOrchestrator":"swarm"}
+services:
+  todo-frontend:
+    image: in28min/todo-front-end:0.0.1-SNAPSHOT
+    #build:
+      #context: frontend/todo-app
+      #dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    restart: always
+    depends_on: # Start the depends_on first
+      - todo-api 
+    networks:
+      - fullstack-application-network
+    container_name: todo-front-end
+
+  todo-api:
+    image: in28min/rest-api-full-stack:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - fullstack-application-network
+  
+# Networks to be created to facilitate communication between containers
+networks:
+  fullstack-application-network:
+
+
+# docker-compose used to lunch a multiple containers 
+#  know the version of docker-compose installed
+#  docker-compose -version
+
+# verifie if the image it present 
+# docker images  in28min/rest-api-full-stack:0.0.1-SNAPSHOT
+# docker show the details
+
+# run docker compose and the containers 
+# docker-compose up -detach
+
+# stop docker compose and the containers 
+# docker-compose down
+
+# docker-compose show configuration 
+# docker-compose config
+
+# docker-compose images what are images will be used
+# docker-compose images 
+
+# docker-compose ps => the processus 
+# docker-compose ps 
+
+# docker-compose top show all the process running in the container
+# docker-compose top
+
+# docker-compose pause   all the containers 
+# docker-compose pause
+
+# docker-compose unpause
+
+# docker-compose kill  immediately terminates the process
+# docker-compose kill
+
+# docker-compose stop  stop docker-compose graceful shudown
+# docker-compose stop
+# docker-compose ps   verifify 
+
+# docker-compose build  to build an image with  docker-compose
+# docker-compose build
+# but but you should to comment line of image:  , and every excution of docker-compose we create an image   
+#todo-frontend:
+#    image: in28min/todo-front-end:0.0.1-SNAPSHOT
+#    build:
+#      context: frontend/todo-app
+#      dockerfile: Dockerfile
+

@@ -1,0 +1,98 @@
+# create image with static files 
+# ========================================================
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080 it s just an in formation to tell this container user 8080 port  it s just a metadata 
+EXPOSE 8080
+ADD target/hello-world-rest-api.jar hello-world-rest-api.jar
+ENTRYPOINT ["sh" , "-c", "java -jar /hello-world-rest-api.jar"]
+
+# create image from container 
+#     -t => tag of image
+# docker build -t in28min/hello-world-rest-api:dockerfile1 .
+# docker run -p 8080:8080 in28min/hello-world-rest-api:dockerfile1
+# docker container stop eb45b826940c
+# docker container ls
+# url de test  ---> http://localhost:8080/hello-world-bean    
+
+# ========================================================
+
+
+# ---->  run container   
+# docker run -p 9000:8080 in28min/hello-word-rest-api:dockerfile 
+# docker run in28min/hello-world-rest-api
+
+# ----> check status of container 
+# docker log -f eb45b826940c
+
+# ----> delete image from local repository - f = force
+# docker image rm -f ec7f5d19e6f0
+
+# ----> pause the container 
+# docker container pause  ec7f5d19e6f0
+
+# ----> unpause the container 
+# docker container unpause  ec7f5d19e6f0
+
+# ----> inspect details of the contairer [image from , metadata , currentPlateforme, volumes,  ...]
+# docker container inspect  ec7f5d19e6f0
+
+# ----> remove all stoped container 
+# docker container prune
+
+# ---->  stop => SIGTERM => graful shudown
+# docker container stop eb45b826940c
+
+# ----> kill container 
+#      stop => SIGTERM => graceful shudown
+#      kill => SIGKILL => immediately terminates the process
+# docker container kill eb45b826940c
+
+# -----> run container  -p => port  -d => detach mode
+# docker run -p 5000:5000 -d in28min/todo-rest-api-h2:0.0.1-SNAPSHOT
+
+# -----> run container  --restart =no(by default) or always  , always it s used  in we restart docker desktop , the container is restard as well
+# docker run -p 5000:5000 -d --restart=always in28min/todo-rest-api-h2:0.0.1-SNAPSHOT
+
+# -----> events  lest see the events in docker 
+# -----> docker events 
+
+# -----> docker top can see all precess running in the specific container 
+# -----> docker top eb45b826940c
+
+# -----> docker stats  show all the stats of the container running 
+# -----> docker stats
+
+# -----> -m => limit the memory to use for a container (here -m 512m)
+#        -cpu-quota (100000 = 100%  , 50000 = 50%)  (here 5000 = 5%)
+# ocker run -p 5000:5000 -d -m 512m -cpu-quota 5000 in28min/todo-rest-api-h2:0.0.1-SNAPSHOT 
+
+# -----> system df tell all about docker manages ( it manage volumes , containers , )
+# docker system df 
+
+# -----> si l'image n'est pas trouvé il le charge depuis le registry Docker 
+#       -dit  -d => detached mode     -i => interactive   -t => tty
+#       in combination , -it allows you to run commands on a running container 
+# docker run -dit openjdk:8-jdk-alpine
+
+# -----> execute dommands agains container 
+# docker container exec 4c07cf0bd3dc  ls /tmp
+
+
+# Image 
+# -----> History of image
+# docker history in28min/hello-world-rest-api:dockerfile1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
