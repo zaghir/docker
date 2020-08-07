@@ -1,0 +1,1 @@
+docker run --detach --env MYSQL_ROOT_PASSWORD=admin --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=todos-pass --env MYSQL_DATABASE=todos --network mysql-network  -v C:\\Devs-and-tools\\project\\shell:/usr/zaghir --name mysql --publish 3307:3306 mysql:5.7
