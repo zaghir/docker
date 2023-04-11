@@ -1,0 +1,4 @@
+
+executer cette commande si vous avez un probleme de connection reseau
+il va faire un reset des cartes 
+$ netcfg -d

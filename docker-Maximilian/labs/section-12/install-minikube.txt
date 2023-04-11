@@ -1,0 +1,53 @@
+
+install 
+
+https://minikube.sigs.k8s.io/docs/start/
+https://kubernetes.io/docs/tasks/tools/#install-on-windows-using-chocolatey-or-scoop
+
+execute 
+ https://learn.microsoft.com/fr-fr/virtualization/hyper-v-on-windows/reference/hyper-v-requirements?f=255&MSPPError=-2147217396
+ > systeminfo
+ 
+
+ Configuration requise pour Hyper-V:         Un hyperviseur a été détecté. Les fonctionnalités nécessaires à Hyper-V ne seront pas affichées.
+ 
+ if you have this message , that indicate you have all you will need 
+ if not install ah hypervisor like virtualbox 
+ 
+ in powershell execute
+
+   > New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+	Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+
+  add the minikube.exe binary to your PATH
+  
+  > $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+    if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
+      [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
+    }
+
+
+  > cd %USERPROFILE%
+  
+  mkdir .kube
+  
+  create file with name = config without extention 
+
+  minikube start --driver=virtualbox
+  minikube start --driver=docker
+  
+  if not work change driver to hyperv provided by windows 
+  
+  delete vm created firt 
+  
+  minikube delete 
+  
+  in admin mode execute 
+  minikube start --driver=hyperv
+
+  
+  
+  minikube status 
+
+  minikube dashboard
+

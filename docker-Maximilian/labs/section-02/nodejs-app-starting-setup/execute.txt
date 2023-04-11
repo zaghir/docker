@@ -1,0 +1,27 @@
+docker build .
+
+> -p = publish
+
+docker run -d -p 80:80  38bd46d1c3cc
+
+docker list 
+docker stop distracted_easley
+
+
+
+docker --help
+
+docker stop <container>
+docker start <container>
+
+docker attach CONTAINER
+
+docker start <container>    run containcer en detach mode
+
+if we want to see log of container in detached mode
+docker logs <container>
+
+--follow  -f  = follow log out
+docker logs -f <container>
+
+docker attach CONTAINER

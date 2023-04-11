@@ -1,0 +1,29 @@
+docker build .
+
+docker images 
+
+docker container run -it <imageRef>
+
+docker container run -it 6a29a044b793
+
+docker container ps -a 
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                      PORTS     NAMES
+fa9ad3fb2560   6a29a044b793   "python rng.py"          48 seconds ago   Exited (0) 42 seconds ago             thirsty_sutherland
+59c5d6780494   823ecbc1271e   "docker-entrypoint.s…"   20 hours ago     Exited (137) 17 hours ago             cool_franklin
+
+
+docker start --help
+Usage:  docker start [OPTIONS] CONTAINER [CONTAINER...]
+
+Start one or more stopped containers
+
+Options:
+  -a, --attach               Attach STDOUT/STDERR and forward signals
+      --detach-keys string   Override the key sequence for detaching a
+                             container
+  -i, --interactive          Attach container's STDIN
+
+# restart a container
+docker start -a -i fa9ad3fb2560
+
