@@ -45,9 +45,14 @@ execute
   in admin mode execute 
   minikube start --driver=hyperv
 
-  
-  
-  minikube status 
 
-  minikube dashboard
+ if not working try this 
+
+ > minikube start --driver=virtualbox --no-vtx-check
+
+
+  
+>  minikube status 
+
+>  minikube dashboard
 
